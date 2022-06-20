@@ -11,8 +11,13 @@ const sum = (...numbers: number[]) => {
 
 class Person {
   // properties
-  name: string
+  // properties are public by default
+  // properties can be private or protected by prefixing them using the private or protected keyword
+  private name: string
 
+  // methods
+  // constructor
+  // we can avoid defining the class properties by setting their visibility in the constructor
   constructor(name: string) {
     // assign value to name property
     this.name = name
