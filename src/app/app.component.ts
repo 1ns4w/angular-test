@@ -11,11 +11,22 @@ export class AppComponent {
   // this file is also known as controller
   // string interpolation should be used for putting values within some content like an h1 tag
   // property binding should be used for html attributes
-  title = 'angular-test';
-  img = 'https://picsum.photos/200/300';
   person = {
-    name: 'John',
+    name: 'Angel',
+    jobTitle: 'Software Engineer',
     age: 20,
-    img: 'https://source.unsplash.com/random/400x400'
+    mainHobbie: 'Coding'
+  }
+
+  counter = 0
+  btnDisabled = true;
+
+  // event binding work the same way as properties but specifically for events and should be used with ()
+  toggleButton() {
+    this.btnDisabled = !this.btnDisabled;
+  }
+
+  increaseCounter() {
+    this.counter++;
   }
 }

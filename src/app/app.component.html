@@ -1,11 +1,10 @@
-<h1>Propiedades</h1>
-<input type="text" [value]="person.name">
-<progress max="100" [value]="person.age"></progress>
-<img [src]="person.img" alt="random image">
-<hr>
-<h1>Hello world</h1>
-<!--<h2>{{ 'Hola Mundo'.repeat(5) }}</h2>-->
-<!--string interpolation allow us to use javascript in html-->
-<p>1 + 1 = {{ 1 + 1 }}</p>
-<p>Title value is {{ title }}</p>
-<img src={{img}} alt="random image">
+<!--String Interpolation-->
+<h1>My name is {{person.name}} and I'm a {{person.jobTitle}}</h1>
+<h2>I'm {{person.age}} and I like {{person.mainHobbie.toLocaleLowerCase()}}</h2>
+<p>The count is {{counter}}</p>
+
+<!--Property Binding-->
+<button [disabled]="btnDisabled" (click)="increaseCounter()">Increase counter</button>
+
+<!--Event Binding-->
+<button (click)="toggleButton()">Toggle increaser</button>
