@@ -27,5 +27,5 @@ class Person {
 }
 
 const me = new Person('John', 12)
-console.log(me.name, me.age)
+//console.log(me.name, me.age)
 
