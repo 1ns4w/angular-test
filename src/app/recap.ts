@@ -13,18 +13,19 @@ class Person {
   // properties
   // properties are public by default
   // properties can be private or protected by prefixing them using the private or protected keyword
-  private name: string
+  name: string
 
   // methods
   // constructor
-  // we can avoid defining the class properties by setting their visibility in the constructor
-  constructor(name: string) {
+  // we can avoid declaring class properties by setting their visibility in the constructor
+  constructor(name: string, private age: number) {
     // assign value to name property
     this.name = name
+    this.age = age
   }
 
 }
 
-const me = new Person('John')
-console.log(me.name)
+const me = new Person('John', 12)
+console.log(me.name, me.age)
 
