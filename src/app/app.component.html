@@ -18,6 +18,7 @@
   <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis et a  libero nisi neque voluptatem aut, non, itaque maiores placeat explicabo minima dignissimos enim quas ducimus error saepe provident laudantium? libero nisi neque voluptatem aut, non, itaque maiores placeat explicabo minima dignissimos enim quas ducimus error saepe provident laudantium?</p>
 </div>
 
+<!--We can achieve this better using data binding but this is also a good solution-->
 <p>{{ text }}</p>
 <input type="text" (keyup)="updateTextContent($event)">
 
@@ -25,8 +26,13 @@
 <!--Data binding is a feature from Angular Forms, an Angular package-->
 <!--Angular Forms is imported in app.module.ts-->
 <!--Data binding syncs whatever is binded to a property on update-->
-<p>{{ person.name }}</p>
+<p>Name: {{ person.name }}</p>
 <p>Valid: {{ nameInput.valid }}</p>
 <!--Reference variables are identifiers for elements-->
 <!--Reference variables must be assigned ngModel for ngModel to track it-->
 <input type="text" required #nameInput="ngModel" [(ngModel)]="person.name">
+
+<!--Valid property checks if the binded data breaks any attribute validation-->
+<p>Age: {{person.age}}</p>
+<p>Valid: {{ ageInput.valid }}</p>
+<input type="number" min="0" #ageInput="ngModel" [(ngModel)]="person.age">
