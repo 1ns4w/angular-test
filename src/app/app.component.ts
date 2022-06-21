@@ -29,4 +29,9 @@ export class AppComponent {
   increaseCounter() {
     this.counter++;
   }
+
+  onScroll(event: Event) {
+    const element = event.target as HTMLElement
+    console.log(element.scrollTop)
+  }
 }
