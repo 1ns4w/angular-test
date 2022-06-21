@@ -34,4 +34,11 @@ export class AppComponent {
     const element = event.target as HTMLElement
     console.log(element.scrollTop)
   }
+
+  text = ''
+
+  updateTextContent(event: Event) {
+    const element = event.target as HTMLInputElement
+    this.text = element.value
+  }
 }
