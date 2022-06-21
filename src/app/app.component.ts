@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ProductInterface }  from './product.model'
 
 @Component({
   selector: 'app-root',
@@ -18,8 +19,45 @@ export class AppComponent {
     mainHobbie: 'Coding'
   }
 
+  answer = null
   counter = 0
   btnDisabled = true;
+
+  emojis: string[] = [ '😂' , '🐦', '🐳','🌮', '💚']
+
+  products: ProductInterface[] = [
+    {
+      name: 'EL mejor juguete',
+      price: 565,
+      image: './assets/images/toy.jpg',
+      category: 'all',
+    },
+    {
+      name: 'Bicicleta casi nueva',
+      price: 356,
+      image: './assets/images/bike.jpg'
+    },
+    {
+      name: 'Colleción de albumnes',
+      price: 34,
+      image: './assets/images/album.jpg'
+    },
+    {
+      name: 'Mis libros',
+      price: 23,
+      image: './assets/images/books.jpg'
+    },
+    {
+      name: 'Casa para perro',
+      price: 34,
+      image: './assets/images/house.jpg'
+    },
+    {
+      name: 'Gafas',
+      price: 3434,
+      image: './assets/images/glasses.jpg'
+    }
+  ]
 
   // event binding work the same way as properties but specifically for events and should be used with ()
   toggleButton() {
@@ -40,5 +78,23 @@ export class AppComponent {
   updateTextContent(event: Event) {
     const element = event.target as HTMLInputElement
     this.text = element.value
+  }
+
+  newEmoji = ''
+  emojiIndex = 0
+  indexError: boolean = false
+
+  addEmoji() {
+    this.emojis.push(this.newEmoji)
+    this.newEmoji = ''
+  }
+
+  deleteElement(elementIndex: number) {
+    if (elementIndex + 1 <= this.emojis.length) {
+      this.emojis.splice(elementIndex, 1)
+      this.indexError = false
+    } else {
+      this.indexError = true
+    }
   }
 }

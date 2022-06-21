@@ -1,16 +1,19 @@
 <!--String Interpolation-->
 <!--Variables are interpolated using double brackets-->
-<h1>My name is {{person.name}} and I'm a {{person.jobTitle}}</h1>
-<h2>I'm {{person.age}} and I like {{person.mainHobbie.toLocaleLowerCase()}}</h2>
+<h1>String Interpolation</h1>
+<p>My name is {{person.name}} and I'm a {{person.jobTitle}}</p>
+<p>I'm {{person.age}} and I like {{person.mainHobbie.toLocaleLowerCase()}}</p>
 <p>The count is {{counter}}</p>
 
 <!--Property Binding-->
 <!--Properties are binded using brackets-->
+<h1>Property Binding</h1>
 <button [disabled]="btnDisabled" (click)="increaseCounter()">Increase counter</button>
 
 <!--Event Binding-->
 <!--Events are binded using parenthesis-->
 <!--More useful events for event binding: https://www.eduforbetterment.com/lists-of-useful-events-types-for-event-binding-in-angular/-->
+<h1>Event Binding</h1>
 <button (click)="toggleButton()">Toggle increaser</button>
 
 <!--Events are captured using $event-->
@@ -26,6 +29,7 @@
 <!--Data binding is a feature from Angular Forms, an Angular package-->
 <!--Angular Forms is imported in app.module.ts-->
 <!--Data binding syncs whatever is binded to a property on update-->
+<h1>Data Binding and Reference Variables</h1>
 <p>Name: {{ person.name }}</p>
 <p>Valid: {{ nameInput.valid }}</p>
 <!--Reference variables are identifiers for elements-->
@@ -36,3 +40,47 @@
 <p>Age: {{person.age}}</p>
 <p>Valid: {{ ageInput.valid }}</p>
 <input type="number" min="0" #ageInput="ngModel" [(ngModel)]="person.age">
+
+<!--*ngIf displays some content if the condition is met-->
+<!--You can also set else conditions referencing another block with its reference variable-->
+<h1>*ngIf</h1>
+<p>What is 4 + 4?</p>
+<input type="number" required [(ngModel)]="answer">
+<p *ngIf="answer === 8; else myBlock">Correct answer!</p>
+<ng-template #myBlock><p>Respuesta fallida</p></ng-template>
+
+<!--*ngFor iterates over an iterable-->
+<h1>*ngFor</h1>
+<p *ngIf="emojis.length > 0; else listaVacia">Lista de emojis:</p>
+<ng-template #listaVacia>
+  <p>Añade elementos a la lista</p>
+</ng-template>
+
+<ul>
+  <li *ngFor="let emoji of emojis; index as i">
+    {{i}} {{emoji}}
+    <button (click)="deleteElement(i)">Eliminar emoji</button>
+  </li>
+</ul>
+<input required type="text" [(ngModel)]="newEmoji">
+<button (click)="addEmoji()">Add emoji</button>
+
+<p *ngIf="indexError === true">El index ingresado es invalido</p>
+<input type="number" min="0" required placeholder="Emoji index" [(ngModel)]="emojiIndex">
+<button (click)="deleteElement(emojiIndex)">Delete emoji</button>
+
+<!--*ngFor with objects-->
+<div *ngFor="let product of products">
+  <h3>{{ product.name }}</h3>
+  <img [src]="product.image" width="180" alt="">
+  <p>Price: ${{ product.price }}</p>
+</div>
+
+<!--*ngSwitch is used to avoid creating multiple cases for some data using *ngIf-->
+<h1>ngSwitch</h1>
+<input type="text" required [(ngModel)]="person.name">
+<div [ngSwitch]="person.name">
+  <p *ngSwitchCase="'Angel'">Es Angel</p>
+  <p *ngSwitchCase="'Insaw'">Es Insaw</p>
+  <p *ngSwitchDefault>No hay match</p>
+</div>
